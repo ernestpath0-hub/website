@@ -1,0 +1,15 @@
+# ErnestPath
+
+> ErnestPath is a specialist enrollment growth agency for coaching and training institutes in India — website development, SEO, and Google/Meta Ads focused on turning search demand into filled batches. ErnestPath Academy teaches the MERN stack through real client-style projects and freelance-readiness training.
+
+## Services
+- [SEO for Coaching Institutes](https://ernestpath.com/services/seo)
+- [Website Development for Coaching Institutes](https://ernestpath.com/services/website-development)
+- [Google & Meta Ads for Coaching Institutes](https://ernestpath.com/services/ads)
+
+## Academy
+- [ErnestPath Academy — MERN Stack](https://ernestpath.com/academy)
+- [Enroll](https://ernestpath.com/academy/enroll)
+
+## Free tools
+- [Free Admission Score](https://ernestpath.com/tools/admission-score)

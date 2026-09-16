@@ -1,69 +1,147 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import { Homepage } from "@/components/sections/hero";
+import { TrustStrip } from "@/components/sections/trust-strip";
+import { ProblemSection } from "@/components/sections/problem";
+import { ServicesOverview } from "@/components/sections/services-overview";
+import { Methodology } from "@/components/sections/methodology";
+import { DiagnosticCTA } from "@/components/sections/diagnostic-cta";
+import { AboutBrand } from "@/components/sections/about";
+import {HomeFAQ} from "@/components/sections/faq";
+import { FinalCTA } from "@/components/sections/final-cta";
+
+export const metadata: Metadata = {
+  title: "Coaching Institute Marketing & Enrollment Growth | ErnestPath",
+  description:
+    "ErnestPath helps coaching and training institutes across India improve admissions with conversion-focused websites, SEO, Google Ads, Meta Ads and better lead-flow measurement.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Coaching Institute Marketing & Enrollment Growth | ErnestPath",
+    description:
+      "Admission-focused websites, SEO and paid campaigns for coaching and training institutes.",
+    url: "/",
+    siteName: "ErnestPath",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Coaching Institute Marketing & Enrollment Growth | ErnestPath",
+    description:
+      "Admission-focused websites, SEO and paid campaigns for coaching and training institutes.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ernestpath.com/#organization",
+      name: "ErnestPath",
+      url: "https://ernestpath.com/",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://ernestpath.com/logo.png",
+      },
+      email: "hello@ernestpath.com",
+      description:
+        "ErnestPath is a specialist enrollment growth agency providing website development, SEO and paid advertising for coaching and training institutes in India.",
+      areaServed: { "@type": "Country", name: "India" },
+      knowsAbout: [
+        "Coaching institute marketing",
+        "Education website development",
+        "Local SEO for coaching institutes",
+        "Technical SEO",
+        "Google Ads",
+        "Meta Ads",
+        "Admission lead generation",
+        "Conversion tracking",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ernestpath.com/#website",
+      url: "https://ernestpath.com/",
+      name: "ErnestPath",
+      publisher: { "@id": "https://ernestpath.com/#organization" },
+      inLanguage: "en-IN",
+    },
+    {
+      "@type": "Service",
+      "@id": "https://ernestpath.com/#enrollment-growth",
+      name: "Enrollment Growth Services for Coaching Institutes",
+      serviceType: "Website development, SEO and paid advertising for coaching institutes",
+      provider: { "@id": "https://ernestpath.com/#organization" },
+      areaServed: { "@type": "Country", name: "India" },
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: "Coaching institutes, training institutes and education businesses",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "ErnestPath agency services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Website Development for Coaching Institutes",
+              url: "https://ernestpath.com/services/website-development",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "SEO for Coaching Institutes",
+              url: "https://ernestpath.com/services/seo",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Google and Meta Ads for Coaching Institutes",
+              url: "https://ernestpath.com/services/ads",
+            },
+          },
+        ],
+      },
+    },
+  ],
+};
+
+function safeJson(value: object) {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main id="main-content" className="overflow-hidden bg-[#f3f0e8] text-[#10110f]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJson(structuredData) }}
+      />
+      <Homepage />
+      <TrustStrip />
+      <ProblemSection />
+      <ServicesOverview />
+      <Methodology />
+      <DiagnosticCTA />
+      <AboutBrand />
+      <HomeFAQ/>
+      <FinalCTA />
+    </main>
   );
 }
