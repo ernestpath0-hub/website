@@ -245,6 +245,23 @@ export default async function InsightPage({
         ],
     };
 
+    const faqSchema =
+        insight.faqs && insight.faqs.length > 0
+            ? {
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "@id": `${articleUrl}#faq`,
+                  mainEntity: insight.faqs.map((faq) => ({
+                      "@type": "Question",
+                      name: faq.question,
+                      acceptedAnswer: {
+                          "@type": "Answer",
+                          text: faq.answer,
+                      },
+                  })),
+              }
+            : null;
+
     return (
         <main className="overflow-hidden bg-[#f3f0e8] text-[#10110f]">
             {/* Structured data */}
@@ -261,6 +278,15 @@ export default async function InsightPage({
                     __html: safeJson(breadcrumbSchema),
                 }}
             />
+
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: safeJson(faqSchema),
+                    }}
+                />
+            )}
 
             <article>
                 {/* =====================================================
